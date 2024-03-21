@@ -90,7 +90,7 @@ This will install everything listed in the `requirements.txt` folder.
 ### Step 5: Run Api
 
 - Change the IP address at the bottom of api.py to your ip address.
-- Make sure 8080 is opened through the firewall.
+- Make sure 8083 is opened through the firewall.
 - Run python api.py
 
 Hopefully its running, go access it in a browser with: [http://your.ip.address:8083](http://your.ip.address:8083)
