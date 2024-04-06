@@ -68,8 +68,10 @@ class MongoManager:
             if self.collection is not None:
                 self.collection = self.db[self.collection]
 
+
     def __str__(self):
         return f"url: {self.connection_url} coll: {self.collection_name}"
+
 
     def setDb(self, db_name):
         """Sets the current database."""
@@ -79,6 +81,7 @@ class MongoManager:
         else:
             print(f"Database {db_name} does not exist. Creating {db_name}.")
             self.db = self.client[db_name]
+
 
     def setCollection(self, collection_name):
         """Sets the current collection."""
@@ -93,6 +96,7 @@ class MongoManager:
                 self.collection = self.db[collection_name]
         else:
             print("No database selected. Use set_database() first.")
+
 
     def distinct(self, field):
         """
@@ -112,6 +116,7 @@ class MongoManager:
             print(f"Error occurred while retrieving distinct values: {e}")
             return None
 
+
     def dropCollection(self, collection_name):
         """Deletes a collection from the current database."""
         if self.db is not None:  # Corrected the check here
@@ -122,6 +127,7 @@ class MongoManager:
                 print(f"Collection {collection_name} does not exist.")
         else:
             print("No database selected. Use set_database() first.")
+
 
     def dropDb(self, db_name):
         """Deletes a database."""
@@ -135,6 +141,7 @@ class MongoManager:
                 self.collection = None
         else:
             print(f"Database {db_name} does not exist.")
+
 
     def get(self, **kwargs):
         """
@@ -164,6 +171,7 @@ class MongoManager:
             kwargs["success"] = False
             kwargs["error"] = str(e)
             return kwargs
+
 
     def get2(self, **kwargs):
         """
@@ -196,6 +204,7 @@ class MongoManager:
                 "error": str(e)  # It's often a good idea to convert exceptions to strings for readability
             }
 
+
     def post(self, document):
         # Implement the logic to insert data
         if isinstance(document, dict):
@@ -224,6 +233,7 @@ class MongoManager:
         result = self.collection.update_many(filter_query, update_data, upsert=upsert)
         return result
 
+
     def put2(self, id_key, id_val, update_key, update_value):
         """
         Updates the price of a specific item in the collection.
@@ -248,13 +258,16 @@ class MongoManager:
         else:
             return {"success": False, "message": "No matching document found."}
 
+
     def delete(self, query):
         # Implement the logic to delete data based on the query
         pass
 
+
     def store_image_in_mongodb(self,product_id,png_data):
 
         self.collection.insert_one({"_id":product_id,"image_data": png_data})
+
 
     def get_image_from_mongodb(self,image_id):
         print({"_id": int(image_id)})
