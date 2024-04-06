@@ -191,7 +191,7 @@ def get_candy_by_id(id: str):
     """
     mm.setCollection('candies')
     result = mm.get(query = {"id": id},
-    filter={"_id": 0, "name": 1, "price": 1, "category": 1})
+    filter={"id": 0, "name": 1, "price": 1, "category": 1})
     return result
 
 
@@ -207,9 +207,9 @@ def candies_by_price_range(min_price: float = Query(..., gt=0), max_price: float
 @app.get("/image/")
 def get_image(img_id:str):
     mm.setCollection('candies')
-    result = mm.get(query = {'_id':int(img_id)})
+    result = mm.get(query = {'id':img_id})
 
-    return FileResponse(result['data']['img_path'])
+    return FileResponse(result['data']['img_url'])
 
 @app.post("/register")
 def register(person: Person):
@@ -251,11 +251,11 @@ def delete_candy(candy_id: str):
     Remove a candy from the store's inventory.
     """
     mm.setCollection('candies')
-    result = mm.delete(query={"id": candy_id})
+    result = mm.delete(query={"_id": candy_id})
     if result:
         return {"message": "Candy not found"}
     else:
-        return {"message": "Candy deteted Successfully"}
+        return {"message": "Candy deleted Successfully"}
 
 
 
@@ -280,7 +280,7 @@ if __name__ == "__main__":
 
     uvicorn.run(
         "api:app",
-        host="64.23.175.79",  # Use 0.0.0.0 to bind to all network interfaces
+        host="159.223.206.83",  # Use 0.0.0.0 to bind to all network interfaces
         #port=443,  # Standard HTTPS port
         port=8084,  # Standard HTTPS port
         log_level="debug",
