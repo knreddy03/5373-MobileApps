@@ -16,8 +16,8 @@ import axios from 'axios';
 import { BlurView } from 'expo-blur';
 import Modal from 'react-native-modal';
 
-const UPLOAD_ENDPOINT = 'http://159.223.206.83:8080/upload-image';
-const GET_IMAGES_ENDPOINT = 'http://159.223.206.83:8080/images';
+const UPLOAD_ENDPOINT = 'http://159.223.206.83:8084/upload-image';
+const GET_IMAGES_ENDPOINT = 'http://159.223.206.83:8084/images';
 
 const ImageUpload = ({ navigation }) => {
   const [image, setImage] = useState(null);
@@ -120,7 +120,7 @@ const ImageUpload = ({ navigation }) => {
 
   const handleImagePress = async (imageId) => {
     try {
-      const response = await axios.get(`http://159.223.206.83:8080/images/${imageId}`);
+      const response = await axios.get(`http://159.223.206.83:8084/images/${imageId}`);
       if (response.status === 200 && response.data) {
         // Assuming the image data is in a field called 'imageUrl'
         const imageUrl = response.data.imageUrl;
