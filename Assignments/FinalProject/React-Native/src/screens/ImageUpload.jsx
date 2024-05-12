@@ -189,7 +189,7 @@ const ImageUpload = ({ navigation }) => {
               <ScrollView>
                 {savedImages.map((img) => (
                   <TouchableOpacity key={img._id} onPress={() => handleImagePress(img._id)}>
-                    <Image source={{ uri: `http://159.223.206.83:8080/images/${img._id}` }} style={styles.savedImage} />
+                    <Image source={{ uri: `http://159.223.206.83:8084/images/${img._id}` }} style={styles.savedImage} />
                   </TouchableOpacity>
                 ))}
               </ScrollView>
