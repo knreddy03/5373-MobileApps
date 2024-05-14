@@ -6,11 +6,11 @@ In this program, a DigitalOcean server is provisioned as the initial step. Follo
 
 ## Files
 
-|   #   | File             | Description                                                        |
-| :---: | ---------------- | -------------------------------------------------------------------|
-|   1   | api.py           | python script that run basics api implementation using fastapi     |
-|   2   | people.json      | contain dummy data in json format that is used in api.py           |
-|   3   | requirements.txt | list of package that need to install to run this program           |
+|   #   | File                                   | Description                                                        |
+| :---: | -------------------------------------- | -------------------------------------------------------------------|
+|   1   | [api.py](./api.py)                     | python script that run basics api implementation using fastapi     |
+|   2   | [people.json](./people.json)           | contain dummy data in json format that is used in api.py           |
+|   3   | [requirements.txt](./requirements.txt) | list of package that need to install to run this program           |
 
 
 ## INSTRUCTION
